@@ -3,25 +3,12 @@ package main
 import (
 	"fmt"
 	"Go-Banco/contas"
+	"Go-Banco/clientes"
 )
 
-
-
 func main() {
-	contaDaSilvia := contas.ContaCorrente{Titular:"Silvia", Saldo: 300}
-	contaDoGustavo := contas.ContaCorrente{Titular:"Gustavo", Saldo: 100}
+	clienteBruno := clientes.Titular{"Bruno", "123.111.123.12", "Desenvolvedor GO"}
+	contaDoBruno := contas.ContaCorrente{clienteBruno, 123, 123456, 100}
 
-	status := contaDoGustavo.Transferir(200, &contaDaSilvia)
-
-	fmt.Println(status)
-	fmt.Println(contaDaSilvia)
-	fmt.Println(contaDoGustavo)
-
-	status_2 := contaDaSilvia.Transferir(-200, &contaDoGustavo)
-
-	fmt.Println(status_2)
-	fmt.Println(contaDaSilvia)
-	fmt.Println(contaDoGustavo)
-
-
+	fmt.Println(contaDoBruno)
 }
