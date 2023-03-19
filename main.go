@@ -3,12 +3,21 @@ package main
 import (
 	"fmt"
 	"Go-Banco/contas"
-	"Go-Banco/clientes"
+	// "Go-Banco/clientes"
 )
 
-func main() {
-	clienteBruno := clientes.Titular{"Bruno", "123.111.123.12", "Desenvolvedor GO"}
-	contaDoBruno := contas.ContaCorrente{clienteBruno, 123, 123456, 100}
+func PagarBoleto(conta verificarConta, valorDoBoleto float64) {
+	conta.Sacar(valorDoBoleto)
+}
 
-	fmt.Println(contaDoBruno)
+type verificarConta interface {
+	Sacar(valor float64) (string, float64)
+}
+
+func main() {
+	contaDoDenis := contas.ContaPoupanca{}
+	contaDoDenis.Depositar(100)
+	PagarBoleto(&contaDoDenis, 50)
+
+	fmt.Println(contaDoDenis.ObterSaldo())
 }
